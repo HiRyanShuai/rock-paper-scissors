@@ -10,7 +10,6 @@ function playGame(){
     let computerScore = 0;
 
     function playRound(humanChoice, computerChoice){
-        //humanChoice = humanChoice.toLowerCase();
         let outputText = '';
         if(humanChoice===computerChoice){
             outputText += `Draw! ${humanChoice} vs ${computerChoice}`;
@@ -26,7 +25,7 @@ function playGame(){
             outputText += `You lose! ${computerChoice}(computer) beats ${humanChoice}(you)`;
         }
         outputText += `<br>Score: You = ${humanScore}  Computer = ${computerScore}`;
-        return outputText;
+        return outputText + '<br>';
     }
 
     const buttons = document.querySelectorAll('button');
@@ -35,7 +34,6 @@ function playGame(){
     buttons.forEach(button=>{
         button.addEventListener('click',()=>{
             output.innerHTML += playRound(button.id,getComputerChoice());
-            output.innerHTML += '<br>';
             if(humanScore === 5){
                 output.innerHTML += '<br>===================<br>Final Result: You Win!!! <br>===================<br><br>';
                 humanScore = computerScore = 0;
@@ -47,21 +45,7 @@ function playGame(){
         });
     }); 
 
-    // for(let i = 1; i < 6; i++){
-    //     console.log("Round "+i);
-    //     playRound(getHumanChoice(),getComputerChoice());
-    // }
-    
-    // console.log("==== Final result ====")
-    // console.log(`You = ${humanScore}  Computer = ${computerScore}`);
-    // if(humanScore > computerScore){
-    //     console.log("You win!");
-    // }else if(humanScore === computerScore){
-    //     console.log("Draw!");
-    // }else{
-    //     console.log("You lose!");
-    // }
-    // return;
+    return;
 }
 
 playGame();
